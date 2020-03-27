@@ -1,2 +1,2 @@
 * Chapter11-변수이름의효과요약
-- 테스트 텍스트..
+- test commit and push.
