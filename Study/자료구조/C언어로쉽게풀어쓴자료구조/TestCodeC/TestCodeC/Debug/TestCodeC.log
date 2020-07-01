@@ -1,0 +1,9 @@
+﻿  Test.cpp
+d:\github\devdevlife.github.io\study\자료구조\c언어로쉽게풀어쓴자료구조\testcodec\testcodec\test.cpp(22): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+d:\github\devdevlife.github.io\study\자료구조\c언어로쉽게풀어쓴자료구조\testcodec\testcodec\test.cpp(41): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+  main.cpp
+d:\github\devdevlife.github.io\study\자료구조\c언어로쉽게풀어쓴자료구조\testcodec\testcodec\main.cpp(8): warning C4101: 'result' :참조되지 않은 지역 변수입니다.
+  CheckClock.cpp
+  코드를 생성하고 있습니다...
+  TestCodeC.vcxproj -> D:\Github\devdevlife.github.io\Study\자료구조\C언어로쉽게풀어쓴자료구조\TestCodeC\Debug\TestCodeC.exe
+  TestCodeC.vcxproj -> D:\Github\devdevlife.github.io\Study\자료구조\C언어로쉽게풀어쓴자료구조\TestCodeC\Debug\TestCodeC.pdb (Full PDB)
