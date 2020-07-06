@@ -36,6 +36,10 @@ void main()
 	test.Test1();
 #endif
 
+#ifdef TestNumber04
+	test.Test1();
+#endif
+
 	char* input = new char[10];
 	scanf_s(input);
 }

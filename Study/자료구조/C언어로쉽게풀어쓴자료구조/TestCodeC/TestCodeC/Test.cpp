@@ -1,6 +1,7 @@
 
 #include "main.h"
 #include "Test.h"
+#include "CreateStack.h"
 
 Test::Test()
 {
@@ -19,13 +20,42 @@ double Test::Test1()
 	return SlowPower(2, 500000);
 #endif
 
-#ifdef if TestNumber02
+#ifdef TestNumber02
 	PibItor(10);
 	return 0.0;
 #endif
 
 #ifdef TestNumber03
 	HanoiTower(4, 'A', 'B', 'C');
+	return 0.0;
+#endif
+
+#ifdef TestNumber04
+	BaseStack<int>* baseStackArray = CreateStack::CreateStackArray<int>(10);
+
+	int getdata;
+	baseStackArray->Push(10);
+	baseStackArray->Push(9);
+	baseStackArray->Push(8);
+	baseStackArray->Push(7);
+	baseStackArray->Push(6);
+	baseStackArray->Push(5);
+	baseStackArray->Push(4);
+	baseStackArray->Push(3);
+	baseStackArray->Push(2);
+	baseStackArray->Push(1);
+	baseStackArray->Push(22);
+	baseStackArray->Push(23);
+
+	getdata = baseStackArray->Pop();
+	printf("pop data / %d\n", getdata);
+	getdata = baseStackArray->Pop();
+	printf("pop data / %d\n", getdata);
+	getdata = baseStackArray->Pop();
+	printf("pop data / %d\n", getdata);
+
+
+	delete(baseStackArray);
 	return 0.0;
 #endif
 
@@ -38,11 +68,16 @@ double Test::Test2()
 	return Power(2, 500000);
 #endif
 
-#ifdef if TestNumber02
+#ifdef TestNumber02
 	return 0.0;
 #endif
 
 #ifdef TestNumber03
+	return 0.0;
+#endif
+
+#ifdef TestNumber04
+	//BaseStack<int>* baseStackLinked = CreateStack::CreateStackLinkedList<int>();
 	return 0.0;
 #endif
 
