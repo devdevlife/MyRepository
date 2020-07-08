@@ -1,1 +1,121 @@
 chapter08(트리)
+8.1트리의 개념.
+- 배열, 리스트, 스택, 큐 는 모두 선형 자료 구조이다 가족 가계도나 회사 조직도 컴퓨터 디렉토리 같은 구조를 사용하려면 이번에 
+  배우려는 계층 자료 구조를 사용해야 한다. 
+- 인공지능 결정트리도 트리구조.
+- 데이터를 노드라고 부르며 최상위 노드가 루트노드 그 외 하위 노드를 서브트리라고 부른다.
+- 트리에서 루트와 서브트리는 선으로 연결되는데 이 연결선을 간선이라고 한다. 
+- 관계는 인간관계와 똑같다. 부모노드(parent node), 자식노드(children node), 형제노드 등등..
+- 노드의 차수란 자식 노드의 개수를 의미.
+
+8.2이진 트리 소개.
+- 모든 노드가 2개의 서브트리를 가지고 있는 걸 2진 트리라고 한다 그래서 차수는 2개 이상이 될 수 없다.
+- 간선의 개수는 n(총노드) -1 개의 개수를 갖는다. 부모와 자식간의 연결이기 때문.
+- 5레벨의 2진트리는 최소 5개(높이만큼)의 노드를 가지며 최대 2(h -1)의 노드를 가질수 있다.
+  예로 3레벨은 해당 레벨이 가질수 있는 노드 2의 승(3 -1)개의 노드를 가짐 => 4개.
+- 2진트리의 분류.
+  포화이진트리 : 모든 노드가 가득 차있는경우.
+  완전이진트리 : 마지막 트리만 비어있음.
+
+8.3이진 트리의 표현.
+- 배열, 포인터 이용하는 방법이 있다.
+- 배열 : 
+  깊이만큼 최대값을 배열로 할당하여 사용.
+  해당 노드의 번호가 해당 인덱스 번호가 된다.(0은사용하지 않는다)
+
+8.4이진 트리의 순회.
+- 이진 트리 순회방법으로는 전위, 중위, 후의 3가지 방법이 있다.
+  전위: 루트 > 서브 왼쪽 > 서브 오른쪽
+  중위: 왼쪽 > 루트 > 오른쪽
+  후위: 왼쪽 > 오른쪽 > 루트 
+- 루트는 현제 노드의 데이터의 사용이라고 보면 될듯.
+- 재귀 메서드의 매개변수로 루트의 주소를 전달하면 됨.
+
+8.5반복적 순회.
+- 중위 순회를 적용하고 스택에 넣어서 테스트.
+- 이진 트리 만들어놓고 루트를 메서드에 집어넣은 후 왼쪽이 있을때까지 스택에 넣고 더이상 없으면 데이터 사용 후 왼쪽 노드가 있으면 
+  넣어서 재귀 없으면 스택 pop 하나씩 빼면서 왼쪽 재귀 루트가 공백일때까지 반복.
+
+8.6레벨 순회.
+- 루트부터 큐에 넣고 데이터 사용한 다음 왼쪽, 오른쪽 노드있으면 큐에 넣고 재귀.
+  먼저들어간 노드를 큐에서 뺀 다음 사용하고 서브를 또 큐에 넣음 반복하면 레벨 순회가 된다.
+- 사용 목적에 따라 사용하면된다.
+  중위: 값 순서대로 가져다 사용할때.
+  전위: 부모노드를 사용 한 후에 자식 노드를 사용하고 싶을때.
+  후위: 자식노드를 모두 사용 하고 부모노드를 사용하고 싶을때. ex) 디렉토리 용량 계산 - 자식의 용량을 먼저 알아야 하므로.
+
+8.7트리의 응용: 수식 트리 처리.
+- 수식을 2진트리로 만든다음 후위처리한다.
+  메서드: int Evaluate(node root)
+	if (root == null)
+	than return 0;
+	else if (root.left == null && root.right == null)
+	than return root.data;
+	else
+		x = evaluate(root.left);
+		y = evaluate(root.right);
+		op = root.data;
+		return (x op y);
+
+8.8트리의 응용: 디렉토리 용량 계산.
+- 하위 디렉토리 먼저 계산해야 하므로 후위순회.
+  메서드: int Calc_dir_size(node root)
+	if (root == null)
+	than return 0;
+	x = Calc_dir_size(root.left);
+	y = Calc_dir_size(root.right);
+	return (root.data + x + y);
+
+8.9이진 트리의 추가연산.
+- 모든 노드 카운트 계산:
+  메서드: int GetNodeCount(node root)
+	if(root == null)
+	than return 0;
+	else 
+		return (1 + GetNodeCount(root.left) + GetNodeCount(root.right));
+
+- lef(최 하위노드) 카운트 계산:
+  메서드: int CalcLeafCount(node root)
+	if (root == null)
+	than return 0;
+	else if(root.left == null && root.right == null)
+	than return 1;
+	else
+		return 1+ CalcLeafCount(root.left) + CalcLeafCount(root.right);
+
+- 높이 레벨 계산:
+  메서드: int GetHeightLevel(node root)
+	if(root == null)
+	than return 0;
+	else 
+		return 1 + max(GetHeightLevel(root.left), GetHeightLevel(root.right));
+
+8.10스레드 이진트리.
+- 생략.
+
+8.11이진 탐색 트리.
+- 하나 이상의 필드값을 갖는 레코드(테이블)를 중복되지 않는 고유한 키(primary key)를 가지고 탐색 작업을 효율적으로 하는 자료 구조이다.
+- 그러므로 중복되지 않는 고유가 키가 존재해야 한다.
+- 정렬되어 드어가므로 왼쪽노드가 루트보다 작고 오른쪽노드가 루트노드보다 크다.
+메서드: root Search(node root, int key)
+	if (root == null)
+	than return null;
+	else if(key == root.data)
+	than return root;
+	else if(key > root.data)
+	than return Search(root.left);
+	else 
+		return Search(root.right);
+
+- 순회연산보다 반복연산이 훨씬 우수하다. while문 써서 돌리자.
+- 노트 추가 삭제 예제 생략.
+- 삭제의 경우 한개의 서브트리를 가지고 있다면 연결해 주면되고 두개의 서버트리를 가지고 있다면 둘 중 하나 제일 선택해서 해당 서브트리의 
+  가장 작은 리프노를 찾아서 해당 위치로 연결해 주면된다 리프노드의 부모에서 해당 노드를 지워주는것도 잊지말자.
+
+8.12이진 탐색 트리의응용: 영어 사전.
+- 키값이 스트링 비교일 뿐 비슷하므로 패스.
+
+
+
+
+  
